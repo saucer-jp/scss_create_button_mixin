@@ -1,0 +1,68 @@
+// color data
+@function buttonColor ( $i, $name ) {
+	@if $i == 1 {
+		@if $name == top { @return #FF867D; } // top color
+		@if $name == bottom { @return #E1483E; } // bottom color
+		@if $name == text { @return #4D1815; } // text color
+		@if $name == bdr { @return #FF867D; } // border color
+	}
+	@if $i == 2 {
+		@if $name == top { @return #FFCD9C; } // top color
+		@if $name == bottom { @return #F18F2C; } // bottom color
+		@if $name == text { @return #4D2D0E; } // text color
+		@if $name == bdr { @return #FFCD9C; } // border color
+	}
+	@if $i == 3 {
+		@if $name == top { @return #FFF8D1; } // top color
+		@if $name == bottom { @return #FFDA1A; } // bottom color
+		@if $name == text { @return #4D4108; } // text color
+		@if $name == bdr { @return #FFF8D1; } // border color
+	}
+	@if $i == 4 {
+		@if $name == top { @return #70D4B7; } // top color
+		@if $name == bottom { @return #45A88A; } // bottom color
+		@if $name == text { @return #15332A; } // text color
+		@if $name == bdr { @return #70D4B7; } // border color
+	}
+	@if $i == 5 {
+		@if $name == top { @return #4DD94C; } // top color
+		@if $name == bottom { @return #23A322; } // bottom color
+		@if $name == text { @return #104D10; } // text color
+		@if $name == bdr { @return #4DD94C; } // border color
+	}
+	@if $i == 6 {
+		@if $name == top { @return #699EE8; } // top color
+		@if $name == bottom { @return #3369B3; } // bottom color
+		@if $name == text { @return #0F1E33; } // text color
+		@if $name == bdr { @return #699EE8; } // border color
+	}
+	@if $i == 7 {
+		@if $name == top { @return #72DAE8; } // top color
+		@if $name == bottom { @return #39AFBF; } // bottom color
+		@if $name == text { @return #17464D; } // text color
+		@if $name == bdr { @return #72DAE8; } // border color
+	}
+	@if $i == 8 {
+		@if $name == top { @return #C284BE; } // top color
+		@if $name == bottom { @return #91448D; } // bottom color
+		@if $name == text { @return #331831; } // text color
+		@if $name == bdr { @return #C284BE; } // border color
+	}
+	@if $i == 9 {
+		@if $name == top { @return #EB88A3; } // top color
+		@if $name == bottom { @return #BA4465; } // bottom color
+		@if $name == text { @return #4D1C2A; } // text color
+		@if $name == bdr { @return #EB88A3; } // border color
+	}
+	@if $i == 10 {
+		@if $name == top { @return #f2f2f2; } // top color
+		@if $name == bottom { @return #b3b3b3; } // bottom color
+		@if $name == text { @return #000000; } // text color
+		@if $name == bdr { @return #cccccc; } // border color
+	}
+}
+@function buttonColorHover ( $name ) {
+	@if $name == bg { @return #333333; } // background color
+	@if $name == text { @return #ffffff; } // text color
+	@if $name == bdr { @return #000000; } // border color
+}

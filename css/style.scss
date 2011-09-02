@@ -1,0 +1,102 @@
+// ********************
+// border-radius
+// ********************
+@mixin borderRadius( $topLeft: 4px, $topRight: 4px, $bottomRight: 4px, $bottomLeft: 4px ) {
+	@if $topLeft == $topRight {
+		@if $topLeft == $bottomRight {
+			@if $topLeft == $bottomLeft {
+				border-radius:$topLeft;
+			} @else {
+				@include _borderRadius( $topLeft, $topRight, $bottomRight, $bottomLeft );
+			}
+		} @else {
+			@include _borderRadius( $topLeft, $topRight, $bottomRight, $bottomLeft );
+		}
+	} @else {
+		@include _borderRadius( $topLeft, $topRight, $bottomRight, $bottomLeft );
+	}
+}
+@mixin _borderRadius( $topLeft, $topRight, $bottomRight, $bottomLeft ) {
+	-moz-border-radius-topleft:$topLeft; // firefox
+	-moz-border-radius-topright:$topRight; // firefox
+	-moz-border-radius-bottomright:$bottomRight; // firefox
+	-moz-border-radius-bottomleft:$bottomLeft; // firefox
+	border-top-left-radius:$topLeft; // chrome, safari, opera ie9
+	border-top-right-radius:$topRight; // chrome, safari, opera ie9
+	border-bottom-right-radius:$bottomRight; // chrome, safari, opera ie9
+	border-bottom-left-radius:$bottomLeft; // chrome, safari, opera ie9
+}
+// ********************
+// boxShadow
+// ********************
+@mixin boxShadow( $horizontal, $vertical, $blur, $color, $inset :false ) {
+	@if $inset {
+		-moz-box-shadow:$horizontal $vertical $blur $color inset; // firefox
+		-webkit-box-shadow:$horizontal $vertical $blur $color inset; // chrome, safari
+		box-shadow:$horizontal $vertical $blur $color inset; // opera10.5~
+	} @else {
+		-moz-box-shadow:$horizontal $vertical $blur $color; // firefox
+		-webkit-box-shadow:$horizontal $vertical $blur $color; // chrome, safari
+		box-shadow:$horizontal $vertical $blur $color; // opera10.5~
+	}
+}
+// ********************
+// linear-gradient
+// ********************
+@mixin linearGradient( $topColor, $bottomColor ) {
+	background:-moz-linear-gradient(top, $topColor, $bottomColor); // FF 3.6+
+	background:-ms-linear-gradient($topColor, $bottomColor); // IE10
+	background:-webkit-linear-gradient($topColor, $bottomColor); // Safari 5.1+ Chrome 10+
+	background:-o-linear-gradient($topColor, $bottomColor); // Opera 11.10
+	background:linear-gradient($topColor, $bottomColor); // the standard
+}
+// ********************
+// createButton
+// ********************
+@import "color_data"; //color_data.scssの読み込み
+
+$buttonsWidth:10em;
+$buttonsBorderWidth:1px;
+
+@mixin createButtons ( $i ) { // ボタン生成mixin
+	.button-#{$i} {
+		display:inline-block;
+		text-align:center;
+		text-decoration:none;
+		width:$buttonsWidth;
+		color:buttonColor( $i, text );
+		border:$buttonsBorderWidth solid buttonColor( $i, bdr );
+		@include linearGradient ( buttonColor( $i, top ), buttonColor( $i, bottom ) );
+		@include borderRadius;
+		@include boxShadow( 0, 1px, 4px, #555 );
+
+		&:hover {
+			color:buttonColorHover( text );
+			border-color:buttonColorHover( bdr );
+			background:buttonColorHover( bg );
+		}
+	}
+}
+// ********************
+// create .button-1 ~ 10
+// ********************
+@for $i from 1 through 10 {
+	@include createButtons ( $i );
+}
+
+
+
+
+
+// サンプル用
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	padding:3em;
+}
+li {
+	margin-bottom:1em;
+	list-style-type:none;
+}
